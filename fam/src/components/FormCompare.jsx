@@ -1,13 +1,14 @@
 import React from "react";
 
-function FormCompare(){
+function FormCompare({handleChange, handleClick}){
+    
     return (
         <div>
             <form>
             <label>
                     Pick the currency you have:  
                     <select>
-                    <option value="AUS">Australian Dollar</option>
+                        <option value="AUS">Australian Dollar</option>
                         <option value="BR">Brazilian</option>
                         <option value="ARG">Argentine Peso</option>
                         <option value="US">US Dolar</option>
@@ -27,9 +28,14 @@ function FormCompare(){
                 </label><br />
                 <label>
                     Amount to transfer:  
-                <input type='number'/><br />
+                <input type='number'
+                    onChange={handleChange}
+                />
+                <br />
                 </label>
-                <input type="submit" value="Submit"/>
+                <button onClick={handleClick}>
+                    Submit
+                </button>
             </form>
         </div>
     

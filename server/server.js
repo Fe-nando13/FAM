@@ -2,24 +2,46 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const app = express()
+const port = 5000
+
+app.use(bodyParser.urlencoded({extended: true}))
 mongoose.set('strictQuery', false)
 mongoose.connect('mongodb+srv://fe_nando13:Nando123456@cluster0.xozpj.mongodb.net/test')
 
-// ---------- MONGOOSE - SCHEMA ----------
+// ---------- MONGOOSE - SCHEMA - New User ----------
 const userSchema = new mongoose.Schema({
+    login: String,
     name: String,
-    phone: Number,
-    id: Number,
-    course: String
+    password: String,
+    transactions: []
+    // {
+    //     amountFrom: String, 
+    //     currencyFrom: String, 
+    //     feeComp: Number, 
+    //     currencyTo: String, 
+    //     amountTo: Number, 
+    //     date: Date 
+    // }
+  });
+
+
+  // ---------- MONGOOSE - SCHEMA - New Transaction ----------
+const transactionSchema = new mongoose.Schema({
+    login: String,
+    transactions: {
+        amountFrom: String, 
+        currencyFrom: String, 
+        feeComp: Number, 
+        currencyTo: String, 
+        amountTo: Number, 
+        date: Date 
+    }
   });
 
 // ---------- MONGOOSE - MODEL ----------
 const User = mongoose.model('user', userSchema);
 
-const app = express()
-const port = 5000
-
-app.use(bodyParser.urlencoded({extended: true}))
 
 
 // ---------- GET ----------
@@ -28,17 +50,23 @@ app.get('/', function (req, res) {
   })
 
 // ---------- POST ----------
-app.post('/test', function(req, res){
+app.post('/users', function(req, res){
     const newUser = new User({
-        id: Number(req.body.id),
+        login: req.body.login,
         name: req.body.name,
-        phone: Number(req.body.phone),
-        course: req.body.course,
+        password: req.body.password,
+        amountFrom: req.body.amountFrom,
+        currencyFrom: req.body.currencyFrom,
+        feeComp: req.body.feeComp,
+        currencyTo: req.body.currencyTo,
+        amountTo: req.body.amountTo,
+        dateTrans: req.body.date,
+        dateFinal: req.body.dateFinal
     })
     console.log(req.body)
     newUser.save()
   
-    res.send(`The user ${req.body.name} was added successfully`)
+    res.send(`The user ${req.body.feeComp} was added successfully`)
 })
 
 // ---------- DELETE ----------
