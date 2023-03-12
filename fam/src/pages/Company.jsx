@@ -87,7 +87,7 @@ export default function App() {
             cf={currencyFrom}
             ct={currencyTo}
             fee={list.fee}
-            fee2={money > 100 ? "variavel" : "fixa"}
+            fee2={money > 100 ? "variable fee" : "fixed fee"}
             result={() => console.log(list.companyName, list.fee, money, currencyFrom, currencyTo)}
           />
         ))}

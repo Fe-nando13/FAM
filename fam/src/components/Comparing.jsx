@@ -4,12 +4,12 @@ export default function Comparing(props) {
   return (
     <div className="singleComp">
       <p>{props.cn}</p>
-      <p>Voce envia {props.v}</p>
+      <p>You send {props.v}</p>
       <p>{props.cf}</p>
-      <p>A Taxa vai ser de</p>
+      <p>Fee</p>
       <p>{props.fee}</p>
       <p>{props.fee2}</p>
-      <p>Voce recebe</p>
+      <p>You get</p>
       <p>{props.v - props.fee}</p>
       <p>{props.ct}</p>
       <p>Brazilian real</p>
