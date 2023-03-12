@@ -11,11 +11,34 @@
 .companyMain{
     display: flex;
     justify-content: center;
-    gap: 1vw;
+    /* gap: 1vw; */
     color: black;
     margin-bottom: 200px;
 }
 
 .formCompany{
-    width:100%
+    width:90%
+}
+
+.company {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    width:98%;
+    height: 35vh;
+    margin-bottom: 20%;
+}
+
+.singleComp {
+    border: 1px solid var(--COLOR2);
+    width: 24%;
+}
+
+.boxInput{
+    background-color: var(--COLOR2);
+    color: black;
+}
+
+.btnTransfer{
+    border: 3px solid var(--COLOR2);
 }

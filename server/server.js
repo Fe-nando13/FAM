@@ -9,12 +9,14 @@ app.use(bodyParser.urlencoded({extended: true}))
 mongoose.set('strictQuery', false)
 mongoose.connect('mongodb+srv://fe_nando13:Nando123456@cluster0.xozpj.mongodb.net/test')
 
+
 // ---------- MONGOOSE - SCHEMA - New User ----------
 const userSchema = new mongoose.Schema({
     login: String,
     name: String,
     password: String,
-    transactions: []
+    // transactions: [transactionSchema],
+    
     // {
     //     amountFrom: String, 
     //     currencyFrom: String, 
@@ -28,25 +30,22 @@ const userSchema = new mongoose.Schema({
 
   // ---------- MONGOOSE - SCHEMA - New Transaction ----------
 const transactionSchema = new mongoose.Schema({
-    login: String,
-    transactions: {
         amountFrom: String, 
         currencyFrom: String, 
         feeComp: Number, 
         currencyTo: String, 
         amountTo: Number, 
         date: Date 
-    }
   });
 
 // ---------- MONGOOSE - MODEL ----------
 const User = mongoose.model('user', userSchema);
 
 
-
 // ---------- GET ----------
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html')
+    // res.json({ message: "Hello from server!" });
   })
 
 // ---------- POST ----------
@@ -66,7 +65,7 @@ app.post('/users', function(req, res){
     console.log(req.body)
     newUser.save()
   
-    res.send(`The user ${req.body.feeComp} was added successfully`)
+    res.send(`The user ${req.body.name} was added successfully`)
 })
 
 // ---------- DELETE ----------

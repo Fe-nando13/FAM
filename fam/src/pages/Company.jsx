@@ -1,53 +1,97 @@
-import React from "react";
+import "./company.css"
 
-import FormCompare from '../components/FormCompare.jsx';
-import Comparison from "../components/Comparison.jsx";
-import companyList from "../components/companyFee.jsx";
+import React, { useState } from "react";
+import Comparing from "../components/Comparing";
+import companyList from "../components/companyList";
 
-import './company.css'
+export default function App() {
+  const list = companyList();
 
-function createCompany(info){
-    return <Comparison valor={info.valor} fee={info.fee} compName={info.companyName}/>
-}
+  // -------------------- VALUE FROM --------------------
+  let valueFrom = 1500;
+  const [money, setmoney] = useState(1000);
+  const handleChange = (event) => {
+    valueFrom = event.target.value;
+    console.log(valueFrom);
+  };
 
-function Company() {
-    const list = companyList()
+  // -------------------- CURRENCY FROM --------------------
+  let currency1 = "";
+  const [currencyFrom, setCurrencyFrom] = useState("AUS");
+  const handleCurrencyFrom = (event) => {
+    currency1 = event.target.value;
+    console.log(currency1);
+  };
+  // -------------------- CURRENCY TO --------------------
+  let currency2 = "";
+  const [currencyTo, setCurrencyTo] = useState("BR");
+  const handleCurrencyTo = (event) => {
+    currency2 = event.target.value;
+    console.log(currency2);
+  };
 
-    var valueFrom = 0;
+  // -------------------- SUBMIT --------------------
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setmoney(valueFrom);
+    setCurrencyFrom(currency1);
+    setCurrencyTo(currency2);
+    console.log(list);
+  };
 
-    const [amount, setAmount] = React.useState();
-
-
-    function handleChange(event) {
-        valueFrom = event.target.value; 
-    }
-
-    function handleClick(event) {
-        setAmount(valueFrom)
-        event.preventDefault();
-        console.log(valueFrom)
-    }
-
-    return(
-        <div className="companyMain">
-            <div className="formCompany">
-                <FormCompare 
-                    handleChange={handleChange}
-                    handleClick={handleClick}
-                />
-            </div>
-            
+  return (
+    <div className="containerCompany">
+      <div className="boxInput">
+        <h1>Let's transfer it</h1>
+        <form>
+          {/* // -------------------- VALUE FROM -------------------- */}
+          <label>
+            Type the amount you want to transfer:
             <br></br>
-            {amount}
-            <br></br>
-            <h1>The best options for you</h1>
-            <div>{list.map(createCompany)};</div>
-            {/* <Comparison 
-                valor={amount}
-                fee={10}
-            /> */}
-        </div>   
-    )
-}
+            <input type="number" onChange={handleChange} />
+          </label>
 
-export default Company;
+          <br></br>
+          <br></br>
+          {/* // -------------------- CURRENCY FROM -------------------- */}
+          <label>
+            Currency From:
+            <select defaultValue={currencyFrom} onChange={handleCurrencyFrom}>
+              <option value="AUS">Australian Dollar</option>
+              <option value="BR">Brazilian</option>
+              <option value="CH">Chile</option>
+            </select>
+          </label>
+          {/* // -------------------- CURRENCY TO -------------------- */}
+          <label>
+          <br></br>
+            Currency To:
+            <select defaultValue={currencyTo} onChange={handleCurrencyTo}>
+              <option value="AUS">Australian Dollar</option>
+              <option value="BR">Brazilian</option>
+              <option value="CH">Chile</option>
+            </select>
+          </label>
+
+          <br></br>
+          <br></br>
+          <button onClick={handleSubmit}>Submit</button>
+        </form>
+      </div>
+      <br></br>
+      <div className="company">
+        {list.map((list) => (
+          <Comparing 
+            cn={list.companyName}
+            v={money}
+            cf={currencyFrom}
+            ct={currencyTo}
+            fee={list.fee}
+            fee2={money > 100 ? "variavel" : "fixa"}
+            result={() => console.log(list.companyName, list.fee, money, currencyFrom, currencyTo)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
