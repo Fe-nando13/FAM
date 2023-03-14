@@ -2,11 +2,21 @@ import "./company.css"
 
 import React, { useState } from "react";
 import Comparing from "../components/Comparing";
+
+// IMPORTAR A LISTA
 import companyList from "../components/companyList";
+import transactionList from "../components/TransactionsList.js";
+
 
 export default function App() {
-  const list = companyList();
 
+  
+
+
+  // CRIEI A CONST DA LIST
+  const list = companyList();
+  const transaction = transactionList();
+  
   // -------------------- VALUE FROM --------------------
   let valueFrom = 1500;
   const [money, setmoney] = useState(1000);
@@ -37,18 +47,23 @@ export default function App() {
     setCurrencyFrom(currency1);
     setCurrencyTo(currency2);
     console.log(list);
+    console.log(transaction.transaction.companyName)
+    
+
+    
   };
 
   return (
     <div className="containerCompany">
       <div className="boxInput">
+      
         <h1>Let's transfer it</h1>
         <form>
           {/* // -------------------- VALUE FROM -------------------- */}
           <label>
             Type the amount you want to transfer:
             <br></br>
-            <input type="number" onChange={handleChange} />
+            <input placeholder="Type the amount" type="number" onChange={handleChange} />
           </label>
 
           <br></br>
@@ -58,7 +73,7 @@ export default function App() {
             Currency From:
             <select defaultValue={currencyFrom} onChange={handleCurrencyFrom}>
               <option value="AUS">Australian Dollar</option>
-              <option value="BR">Brazilian</option>
+              <option value="BRL">Brazilian</option>
               <option value="CH">Chile</option>
             </select>
           </label>
@@ -68,7 +83,7 @@ export default function App() {
             Currency To:
             <select defaultValue={currencyTo} onChange={handleCurrencyTo}>
               <option value="AUS">Australian Dollar</option>
-              <option value="BR">Brazilian</option>
+              <option value="BRL">Brazilian</option>
               <option value="CH">Chile</option>
             </select>
           </label>
@@ -79,6 +94,7 @@ export default function App() {
         </form>
       </div>
       <br></br>
+      <h1>{list.companyName}</h1>
       <div className="company">
         {list.map((list) => (
           <Comparing 
@@ -86,12 +102,58 @@ export default function App() {
             v={money}
             cf={currencyFrom}
             ct={currencyTo}
+            ctime={list.time}
             fee={list.fee}
             fee2={money > 100 ? "variable fee" : "fixed fee"}
             result={() => console.log(list.companyName, list.fee, money, currencyFrom, currencyTo)}
           />
         ))}
       </div>
+      <div className="transactionsContainer">
+          <h1>TRANSACTIONS</h1>
+          <table>
+            <thead>
+              <td>Date</td>
+              <td>Value</td>
+              <td>Currency From</td>
+              <td>Currency To</td>
+              <td>Fee</td>
+              <td>Value</td>
+              <td>Value</td>
+            </thead>
+            <tr>
+              <td>13/03/2023</td>
+              <td>12000</td>
+              <td>{transaction.transaction[0].companyName}</td>
+              <td>AUS</td>
+              <td>Fee</td>
+              <td>11000</td>
+              <td>Value</td>
+            </tr>
+            </table> 
+            <table>
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Fee</th>
+      <th>Time</th>
+      <th>date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {transaction.transaction.map((transaction, index) => (
+      <tr key={index}>
+        <td>{transaction.companyName}</td>
+        <td>{transaction.fee}</td>
+        <td>{transaction.time}</td>
+        <td>{transaction.date}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>              
+         
+      </div>
+
     </div>
   );
 }
