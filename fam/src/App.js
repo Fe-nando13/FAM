@@ -1,14 +1,20 @@
-import MainPage from "./pages/mainPage.jsx";
+import MainPage from "./pages/MainPage.jsx";
 import Company from "./pages/Company.jsx";
-import './App.css';
+import "./App.css";
+import Navbar from "./Navbar"
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
-      <Company/>
-
+      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<MainPage />} />
+          <Route exact path="/company" element={<Company />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
