@@ -37,7 +37,7 @@ export default function Comparing(props) {
         <div className="currencyFrom">
           
           <p>{props.cf}</p> {/*currency from */}
-          {props.v}          {/*value to transfer */}
+          <p>{props.v}</p>        {/*value to transfer */}
           <p>{`${props.fee * 100}%`}</p> {/*fee */}
           <p>{feeTotal}</p> {/*fee */}
           <p>{youGet}</p>

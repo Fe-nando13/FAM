@@ -21,7 +21,7 @@ function MainPage(){
     return(
         <div className="container">
             
-            <img class="imagePlane" src={moneyPlane} alt=" " />
+            <img className="imagePlane" src={moneyPlane} alt=" " />
             <div className="titleBox">
                 <h1 className="titleMain">Get the best rates</h1>
                 <h2>We are going to compare the best sites to buy currencies for you in less than 10 seconds</h2>

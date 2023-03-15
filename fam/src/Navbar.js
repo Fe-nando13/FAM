@@ -8,14 +8,14 @@ function Navbar() {
         <h2>Currency Roll</h2>
         <p>The best way to buy currencies</p>
       </div>
-      <ul className="navbar-links">
+      {/* <ul className="navbar-links">
         <li>
           <a href="#">Login</a>
         </li>
         <li>
           <a href="#">Register</a>
         </li>
-      </ul>
+      </ul> */}
     </nav>
   );
 }

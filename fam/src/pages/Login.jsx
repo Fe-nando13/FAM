@@ -12,7 +12,7 @@ export const Login = (props) => {
     e.preventDefault();
     console.log(email, pass);
     console.log(loginList);
-
+    
     const emails = loginList.filter((item) => item.email === email);
     console.log(emails);
     if (emails.length === 0) {
@@ -42,7 +42,6 @@ export const Login = (props) => {
           onChange={(e) => setEmail(e.target.value)}
 
         />
-
         <label htmlFor="password">Password</label>
         <input
           type="password"

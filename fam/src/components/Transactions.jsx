@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Transactions(props) {
   return (
-    <div className="">
+    <div>
       <p>{props.cn}</p>
       <p>{props.v}</p>
       <p>{props.cf}</p>

@@ -6,6 +6,7 @@ import Comparing from "../components/Comparing";
 // IMPORTAR A LISTA
 import companyList from "../components/companyList";
 import transactionList from "../components/TransactionsList.js";
+import TableTransactions from "../components/TableTransactions";
 
 
 export default function App() {
@@ -49,6 +50,29 @@ export default function App() {
     console.log(list);
     console.log(transaction.transaction.companyName)
   };
+
+  // const [newTransaction, setnewTransaction] = useState(transaction)
+
+  // const saveTransac = ()=>{
+  //   setnewTransaction();
+  //   transaction.push(
+  //     {
+  //       companyName: "FErnando",
+  //       currencyFrom: 'AU',
+  //       value: 1500,
+  //       fee: 10,
+  //       totalFee: 100,
+  //       currencyTo: 'BRL',
+  //       valueConv: 4000,
+  //       youGot: 1000,
+  //       youGotConv: 1000,
+  //       time: '30 days',
+
+  //     }
+      
+  //   )
+  //   console.log(transaction)
+  // }  
 
   return (
     <div className="containerCompany">
@@ -96,42 +120,55 @@ export default function App() {
         {list.map((list) => (
           <Comparing 
             cn={list.companyName}
-            v={money}
             cf={currencyFrom}
+            v={money}
+            fee={list.fee}
             ct={currencyTo}
             ctime={list.time}
-            fee={list.fee}
-            fee2={money > 100 ? "variable fee" : "fixed fee"}
-            result={() => console.log(list.companyName, list.fee, money, currencyFrom, currencyTo)}
+            result={() => console.log(list.companyName, list.fee, money, currencyFrom, currencyTo, list.time)}
           />
         ))}
       </div>
+      
+
       <div className="transactionsContainer">
+      <h1>TRANSACTIONS</h1>
+      <table>
+        <tr>
+            
+            <th>Company Name</th>
+            <th>Currency From</th>
+            <th>Value</th>
+            <th>Fee</th>
+            <th>Total Fee</th>
+            <th>Currency To</th>
+            <th>Value Converted</th>
+            <th>You got</th>
+            <th>You got Converted</th>
+            <th>Time</th>
+            
+        </tr>
+          
+
         
-          <h1>TRANSACTIONS</h1>
-          {"teste"}
-          <table>
-            <thead>
-              <tr>
-              {transaction[0].email}
-                <th>Company Name</th>
-                <th>Fee</th>
-                <th>Time</th>
-                <th>date</th>
-              </tr>
-            </thead>
-            {/* <tbody>
-              {transaction.transaction.map((transaction, index) => (
-                <tr key={index}>
-                  <td>{transaction.companyName}</td>
-                  <td>{transaction.fee}</td>
-                  <td>{transaction.time}</td>
-                  <td>{transaction.date}</td>
-                </tr>
-              ))}
-            </tbody> */}
-          </table>              
+          {transaction.map((transaction)=>(
+            <TableTransactions 
+              compName={transaction.companyName}
+              currFrom={transaction.currencyFrom}
+              value={transaction.value}
+              Fee={transaction.fee}
+              totalFee={transaction.totalFee}
+              currTo={transaction.currencyTo}
+              valueConv={transaction.valueConv}
+              youGot={transaction.youGot}
+              youGotConv={transaction.youGotConv}
+              date={transaction.companyName}
+              time={transaction.time}
+            />
+          ))}
+      </table>              
       </div>
+
     </div>
   );
 }
