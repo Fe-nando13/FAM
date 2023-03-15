@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-around;
     height: 40vh;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
 }
 .singleComp {
     border: 1px solid var(--COLOR2);
@@ -28,6 +28,8 @@
 
 .transactionsContainer{
     background-color: blue;
+    display: flex;
+    flex-direction: column;
 }
 
 .currencyFrom{

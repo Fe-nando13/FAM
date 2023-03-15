@@ -48,9 +48,6 @@ export default function App() {
     setCurrencyTo(currency2);
     console.log(list);
     console.log(transaction.transaction.companyName)
-    
-
-    
   };
 
   return (
@@ -110,50 +107,31 @@ export default function App() {
         ))}
       </div>
       <div className="transactionsContainer">
+        
           <h1>TRANSACTIONS</h1>
+          {"teste"}
           <table>
             <thead>
-              <td>Date</td>
-              <td>Value</td>
-              <td>Currency From</td>
-              <td>Currency To</td>
-              <td>Fee</td>
-              <td>Value</td>
-              <td>Value</td>
+              <tr>
+              {transaction[0].email}
+                <th>Company Name</th>
+                <th>Fee</th>
+                <th>Time</th>
+                <th>date</th>
+              </tr>
             </thead>
-            <tr>
-              <td>13/03/2023</td>
-              <td>12000</td>
-              <td>{transaction.transaction[0].companyName}</td>
-              <td>AUS</td>
-              <td>Fee</td>
-              <td>11000</td>
-              <td>Value</td>
-            </tr>
-            </table> 
-            <table>
-  <thead>
-    <tr>
-      <th>Company Name</th>
-      <th>Fee</th>
-      <th>Time</th>
-      <th>date</th>
-    </tr>
-  </thead>
-  <tbody>
-    {transaction.transaction.map((transaction, index) => (
-      <tr key={index}>
-        <td>{transaction.companyName}</td>
-        <td>{transaction.fee}</td>
-        <td>{transaction.time}</td>
-        <td>{transaction.date}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>              
-         
+            {/* <tbody>
+              {transaction.transaction.map((transaction, index) => (
+                <tr key={index}>
+                  <td>{transaction.companyName}</td>
+                  <td>{transaction.fee}</td>
+                  <td>{transaction.time}</td>
+                  <td>{transaction.date}</td>
+                </tr>
+              ))}
+            </tbody> */}
+          </table>              
       </div>
-
     </div>
   );
 }
