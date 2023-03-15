@@ -48,9 +48,7 @@ export const Login = (props) => {
           type="password"
           placeholder="**********"
           onChange={(e) => setPass(e.target.value)}
-          /*value={pass}*/
-          /*id="password"
-          name="password"*/
+
         />
         <button type="submit" onClick={handleSubmit}>
           Log In
