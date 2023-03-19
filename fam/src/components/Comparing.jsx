@@ -2,12 +2,23 @@ import React from "react";
 
 export default function Comparing(props) {
   const transferRate = {
-    "AUS/BRL": 3.5, 
-    "AUS/CH": 1111,
-    "BRL/AUS": 2222,
-    "BRL/CH": 3333,
-    "CH/AUS": 4444,
-    "CH/BRL": 5555,
+    "ARS/AUS": parseFloat(0.0075),
+    "ARS/BRL": parseFloat(0.026),
+    "ARS/CHP": parseFloat(4.05),
+
+    "AUS/BRL": parseFloat(3.5),
+    "AUS/ARS": parseFloat(134.03), 
+    "AUS/CHP": parseFloat(543.22),
+
+
+    "BRL/AUS": parseFloat(0.29),
+    "BRL/ARS": parseFloat(38.30),
+    "BRL/CHP": parseFloat(155.22),
+
+    "CHP/AUS": parseFloat(0.0019),
+    "CHP/ARS": parseFloat(0.25),
+    "CHP/BRL": parseFloat(0.0065),
+    
   }
 
   const currencies = props.cf + "/" + props.ct;

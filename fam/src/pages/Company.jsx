@@ -1,5 +1,4 @@
 import "./company.css"
-
 import React, { useState } from "react";
 import Comparing from "../components/Comparing";
 
@@ -8,11 +7,7 @@ import companyList from "../components/companyList";
 import transactionList from "../components/TransactionsList.js";
 import TableTransactions from "../components/TableTransactions";
 
-
 export default function App() {
-
-  
-
 
   // CRIEI A CONST DA LIST
   const list = companyList();
@@ -51,68 +46,53 @@ export default function App() {
     console.log(transaction.transaction.companyName)
   };
 
-  // const [newTransaction, setnewTransaction] = useState(transaction)
-
-  // const saveTransac = ()=>{
-  //   setnewTransaction();
-  //   transaction.push(
-  //     {
-  //       companyName: "FErnando",
-  //       currencyFrom: 'AU',
-  //       value: 1500,
-  //       fee: 10,
-  //       totalFee: 100,
-  //       currencyTo: 'BRL',
-  //       valueConv: 4000,
-  //       youGot: 1000,
-  //       youGotConv: 1000,
-  //       time: '30 days',
-
-  //     }
-      
-  //   )
-  //   console.log(transaction)
-  // }  
+  
 
   return (
     <div className="containerCompany">
       <div className="boxInput">
       
         <h1>Let's transfer it</h1>
-        <form>
+        <div className='insideBox'>
+        <form className="formInfo"> 
           {/* // -------------------- VALUE FROM -------------------- */}
           <label>
             Type the amount you want to transfer:
             <br></br>
-            <input placeholder="Type the amount" type="number" onChange={handleChange} />
+            <br></br>
+            <input  placeholder="Type the amount" type="number" onChange={handleChange} />
           </label>
 
-          <br></br>
-          <br></br>
+         
           {/* // -------------------- CURRENCY FROM -------------------- */}
           <label>
             Currency From:
             <select defaultValue={currencyFrom} onChange={handleCurrencyFrom}>
+              <option value="ARS">Argentinian Peso</option>
               <option value="AUS">Australian Dollar</option>
-              <option value="BRL">Brazilian</option>
-              <option value="CH">Chile</option>
+              <option value="BRL">Brazilian Real</option>
+              <option value="CHP">Chilean Peso</option>
             </select>
           </label>
           {/* // -------------------- CURRENCY TO -------------------- */}
           <label>
-          <br></br>
+        
             Currency To:
             <select defaultValue={currencyTo} onChange={handleCurrencyTo}>
+              <option value="ARS">Argentinian Peso</option>
               <option value="AUS">Australian Dollar</option>
-              <option value="BRL">Brazilian</option>
-              <option value="CH">Chile</option>
+              <option value="BRL">Brazilian Real</option>
+              <option value="CHP">Chilean Peso</option>
             </select>
           </label>
 
-          <br></br>
-          <br></br>
+          
           <button onClick={handleSubmit}>Submit</button>
         </form>
+
+
+        </div>
+        
       </div>
       <br></br>
       <h1>{list.companyName}</h1>
@@ -135,7 +115,6 @@ export default function App() {
       <h1>TRANSACTIONS</h1>
       <table>
         <tr>
-            
             <th>Company Name</th>
             <th>Currency From</th>
             <th>Value</th>
@@ -146,11 +125,8 @@ export default function App() {
             <th>You got</th>
             <th>You got Converted</th>
             <th>Time</th>
-            
         </tr>
-          
 
-        
           {transaction.map((transaction)=>(
             <TableTransactions 
               compName={transaction.companyName}
@@ -168,7 +144,6 @@ export default function App() {
           ))}
       </table>              
       </div>
-
     </div>
   );
 }

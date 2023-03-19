@@ -5,17 +5,19 @@
 .boxInput{
     background-color: var(--COLOR2);
     color: black;
+    
 }
 .company {
     background-color: black;
     display: flex;
     justify-content: space-around;
-    height: 40vh;
+    height: 25vh;
     margin-bottom: 10%;
 }
 .singleComp {
     border: 1px solid var(--COLOR2);
-    width: 24%;
+    width: 30%;
+    height: 41vh;
 }
 .btnTransfer{
     border: 1px solid var(--COLOR2);
@@ -23,6 +25,7 @@
     padding: 0;
     width: 15vw;
     height: 5vh;
+    margin: 30px 0 50vh 0;
 }
 
 
@@ -30,6 +33,7 @@
 
     display: flex;
     flex-direction: column;
+    margin: 20vh 0 0 0;
 }
 
 .currencyFrom{
@@ -51,11 +55,28 @@
     width: 8vw;
 }
 
+.formInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  
+    text-align: center;
+}
 
+label{
+    margin: 0;
+}
+input{
+    margin: 0 0 15px 40px;
+}
 
-
-
-
+.insideBox{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 
 
 
